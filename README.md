@@ -14,5 +14,6 @@ Data interaction and record retrival is very important for any day-to-day servic
 
 ## Info and misc.
 
-####MySQL connector im using
+###MySQL connector im using
+
 `pip install mysql-connector-python`
