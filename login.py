@@ -3,11 +3,12 @@ from tkinter import messagebox
 import tkinter
 import mysql.connector as mysql
 import sys
+import os
 global root
 
-db = mysql.connect(host="localhost",user = "youruser",passwd="yourpass",database="yourdata")
+db = mysql.connect(host="localhost",user = "root",passwd="kilmyPME1",database="testedatabase")
 db_cursor = db.cursor(buffered=True)
-#===============================================================================
+ #===============================================================================
 class Window1:
     def __init__(self,root):
         self.root = root
@@ -16,7 +17,7 @@ class Window1:
         self.root.geometry("350x450")
         self.root.iconbitmap('icone.ico')
         self.root.resizable(0, 0)
-#===============================================================================
+ #===============================================================================
         self.label1 = Label(root, text='Welcome !',font='Helvetica 20 ',fg="#ECF0F1",bg="#2c2f33")
         self.label1.place(x=5,y=35, width=340 ,height=70)
         self.label2 = Label(root, text='Clinical Profile Management',font='Helvetica 14 '
@@ -36,7 +37,7 @@ class Window1:
         
         self.exi = Button(root, text='Exit', font='Helvetica 8',command=self.ExitApp,pady=3)
         self.exi.place(x=125,y=400, width=100 ,height=25)
-#===============================================================================        
+ #===============================================================================        
     def log_win(self):
         self.root.withdraw()
         self.newWindow = Toplevel(self.root)
@@ -65,7 +66,7 @@ class Window2:
         self.root.resizable(0, 0)
         self.nome  = StringVar()
         self.passp = StringVar()
-#====================================================================================================        
+ #====================================================================================================        
         self.label1 = Label(root, text='Log-in',font='Helvetica 20 bold',fg="#ECF0F1",bg="#2c2f33")
         self.label1.place(x=5,y=35, width=340 ,height=70)
         
@@ -75,7 +76,7 @@ class Window2:
         self.label3.place(x=0,y=440, width=350 ,height=10)
         self.frame = LabelFrame(root,bg="#2c2f33")
         self.frame.place(x=5,y=150, width=340 ,height=135)  
-#====================================================================================================  
+ #====================================================================================================  
         self.name = Label(self.frame,text ='Username',font='Helvetica 13 bold',fg="white",bg="#2c2f33")
         self.name.pack(side=TOP, pady=2)        
         self.name = Entry(self.frame,text ='Username',textvariable=self.nome,font='Helvetica 13',justify='center')
@@ -91,7 +92,7 @@ class Window2:
         
         self.exi = Button(root, text='Exit', font='Helvetica 8',command=self.ExitApp,pady=3)
         self.exi.place(x=125,y=400, width=100 ,height=25)
-#====================================================================================================  
+ #====================================================================================================  
     def login(self):
             db.connect()
             nome = self.nome.get()
@@ -104,6 +105,8 @@ class Window2:
             for row  in result:
                 if row == 1:
                     messagebox.showinfo('Welcome','Log-in successful ' + str(nome))
+                    os.system('python mainframe.py')
+                    root.destroy()
                 else:
                     messagebox.showinfo('Information','The name or password is wrong !')
             db.close()
@@ -126,7 +129,7 @@ class Window3:
         self.nome  = StringVar()
         self.passp = StringVar()
         self.role  = StringVar()
-#===================================================================================
+ #===================================================================================
         self.label1 = Label(root, text='Sign-in',font='Helvetica 20 bold',fg="#ECF0F1",bg="#2c2f33")
         self.label1.place(x=5,y=35, width=340 ,height=70)
         self.label3 = Label(root, text='All work by mr-p-oliveira(⌐■_■), 2021',font='Helvetica 7',
@@ -134,14 +137,14 @@ class Window3:
         self.label3.place(x=0,y=440, width=350 ,height=10)
         self.frame = LabelFrame(root,bg="#2c2f33")
         self.frame.place(x=62,y=150, width=225 ,height=105)  
-#===================================================================================
+ #===================================================================================
         self.name = Label(self.frame,font='Helvetica 13 bold',text='Name',fg="white",bg="#2c2f33",pady=5,padx=3).grid(row=0)
         self.name = Entry(self.frame,textvariable=self.nome, justify='center').grid(row=0,column=2)
         
         self.passw = Label(self.frame,font='Helvetica 13 bold',text='Pass',fg="white",bg="#2c2f33",pady=5,padx=3).grid(row=1)
         self.passw = Entry(self.frame,textvariable=self.passp , show='*',justify='center').grid(row=1,column=2)
 
-        choices = {'Admin','Employee'}
+        choices = {'Admin','Supervisor','Employee'}
         self.role.set('Employee')
         self.DrpMenu = Label(self.frame,font='Helvetica 13 bold',fg="white",bg="#2c2f33",padx=5,pady=5).grid(row=2)
         self.DrpMenu = OptionMenu(self.frame, self.role, *choices).grid(row=2,column=2)
@@ -151,7 +154,7 @@ class Window3:
         
         self.exi = Button(root, text='Exit', font='Helvetica 8',command=self.ExitApp,pady=3)
         self.exi.place(x=125,y=400, width=100 ,height=25)
-#===================================================================================
+ #===================================================================================
     def register(self):
             db.connect()
             nome = self.nome.get()
