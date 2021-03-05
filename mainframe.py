@@ -7,7 +7,7 @@ import mysql.connector as mysql
 import time
 global root
 
-db = mysql.connect(host="localhost",user = "root",passwd="kilmyPME1",database="testedatabase")
+db = mysql.connect(host="localhost",user = "root",passwd="yourpass",database="testedatabase")
 db_cursor = db.cursor(buffered=True)
 #=============================================================================================================
 class Window1:
@@ -155,7 +155,7 @@ class Windnew:
         self.label = Label(root, text='Selected',font='Helvetica 8',
                         fg="#D0D3D4",bg="#1e2124").place(x=0,y=87,width=260,height=13)
         
-        self.frame = LabelFrame(root, text=' New Register ',fg="white",bg="#2c2f33")
+        self.frame = LabelFrame(root, text=' New Entry ',fg="white",bg="#2c2f33")
         self.frame.place(x=295,y=70, width=890 ,height=215)
         
         self.frame2 = LabelFrame(root, text=' Information ',fg="white",bg="#2c2f33")
