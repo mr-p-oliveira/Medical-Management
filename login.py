@@ -24,8 +24,7 @@ class Windowstart:
                     ,fg="#D0D3D4",bg="#2c2f33")
         self.label2.place(x=5,y=80, width=340 ,height=50)
         self.label3 = Label(root, text='All work by mr-p-oliveira(⌐■_■), 2021',font='Helvetica 7',
-                    fg="#D0D3D4",bg="#23272a")
-        self.label3.place(x=0,y=440, width=350 ,height=10)
+                    fg="#D0D3D4",bg="#23272a").place(x=0,y=440, width=350 ,height=10)
         
         self.frame = LabelFrame(root, text='Log-in Area',fg="#99aab5",bg="#2c2f33")
         self.frame.place(x=5,y=180, width=340 ,height=120)
