@@ -9,7 +9,7 @@ global root
 db = mysql.connect(host="localhost",user = "root",passwd="kilmyPME1",database="testedatabase")
 db_cursor = db.cursor(buffered=True)
  #===============================================================================
-class Window1:
+class Windowstart:
     def __init__(self,root):
         self.root = root
         self.root.config(bg="#2c2f33")
@@ -69,13 +69,11 @@ class Window2:
  #====================================================================================================        
         self.label1 = Label(root, text='Log-in',font='Helvetica 20 bold',fg="#ECF0F1",bg="#2c2f33")
         self.label1.place(x=5,y=35, width=340 ,height=70)
-        
-        
+    
         self.label3 = Label(root, text='All work by mr-p-oliveira(⌐■_■), 2021',font='Helvetica 7',
                     fg="#D0D3D4",bg="#23272a")
         self.label3.place(x=0,y=440, width=350 ,height=10)
-        self.frame = LabelFrame(root,bg="#2c2f33")
-        self.frame.place(x=5,y=150, width=340 ,height=135)  
+        self.frame = LabelFrame(root,bg="#2c2f33").place(x=5,y=150, width=340 ,height=135)  
  #====================================================================================================  
         self.name = Label(self.frame,text ='Username',font='Helvetica 13 bold',fg="white",bg="#2c2f33")
         self.name.pack(side=TOP, pady=2)        
@@ -87,17 +85,20 @@ class Window2:
         self.passw = Entry(self.frame,text ='Password',textvariable=self.passp,font='Helvetica 13',show='*',justify='center')
         self.passw.pack(side=TOP, pady=2)
         
-        self.ent = Button(root, text='Enter', width=10 ,height=1,command=self.login)
-        self.ent.place(x=135,y=300)
+        self.ent = Button(root, text='Enter', width=10 ,height=1,command=self.login).place(x=90,y=300)
+        self.bck = Button(root, text='Back', width=10 ,height=1,command=self.back_win).place(x=175, y=300)
         
         self.exi = Button(root, text='Exit', font='Helvetica 8',command=self.ExitApp,pady=3)
         self.exi.place(x=125,y=400, width=100 ,height=25)
  #====================================================================================================  
     def login(self):
-            db.connect()
-            nome = self.nome.get()
-            passp = self.passp.get()
-
+        db.connect()
+        nome = self.nome.get()
+        passp = self.passp.get()
+            
+        if nome == "" or passp =="":
+            messagebox.showinfo('Information','Please Fill All Fields')
+        else:
             T1 ="SELECT EXISTS(SELECT * FROM testedatabase.log WHERE nome = %s AND password = %s) "
             var=(nome,passp)
             db_cursor.execute(T1,var)
@@ -107,9 +108,15 @@ class Window2:
                     messagebox.showinfo('Welcome','Log-in successful ' + str(nome))
                     os.system('python mainframe.py')
                     root.destroy()
+                    sys.exit(0)
                 else:
                     messagebox.showinfo('Information','The name or password is wrong !')
             db.close()
+            
+    def back_win(self):
+        self.root.withdraw()
+        self.newWindow = Toplevel(self.root)
+        self.app = Windowstart(self.newWindow)     
         
     def ExitApp(self):
         self.ExitApp = tkinter.messagebox.askquestion ('Exit Portal','Are you sure you want to exit the application. ( Your data is automatically saved )',icon = 'warning')
@@ -149,29 +156,33 @@ class Window3:
         self.DrpMenu = Label(self.frame,font='Helvetica 13 bold',fg="white",bg="#2c2f33",padx=5,pady=5).grid(row=2)
         self.DrpMenu = OptionMenu(self.frame, self.role, *choices).grid(row=2,column=2)
 
-        self.ent = Button(root, text='Register',command=self.register,pady=3)
-        self.ent.place(x=100,y=300, width=150 ,height=25)
+        self.ent = Button(root, text='Register', width=10 ,height=1,command=self.register).place(x=90,y=290)
+        self.bck = Button(root, text='Back', width=10 ,height=1,command=self.back_win).place(x=175, y=290)
         
         self.exi = Button(root, text='Exit', font='Helvetica 8',command=self.ExitApp,pady=3)
         self.exi.place(x=125,y=400, width=100 ,height=25)
  #===================================================================================
     def register(self):
-            db.connect()
-            nome = self.nome.get()
-            passp = self.passp.get()
-            role = self.role.get()
+        db.connect()
+        nome = self.nome.get()
+        passp = self.passp.get()
+        role = self.role.get()
+        
+        if nome == "" or passp =="":
+            messagebox.showinfo('Information','Please Fill All Fields')
+        else:
             query1 = "INSERT INTO log (nome, password, role ) VALUES (%s, %s, %s)"
             val = (nome,passp,role)
             db_cursor.execute(query1,val)
             db.commit()
             messagebox.showinfo('Information','Registration successful ' + str(nome))
-            self.getback()
+            self.back_win()
             db.close()
             
-    def getback(self):    
+    def back_win(self):
         self.root.withdraw()
         self.newWindow = Toplevel(self.root)
-        self.app = Window1(self.newWindow)      
+        self.app = Windowstart(self.newWindow)      
 
     def ExitApp(self):
         self.ExitApp = tkinter.messagebox.askquestion ('Exit Portal','Are you sure you want to exit the application. ( Your data is automatically saved )',icon = 'warning')
@@ -184,5 +195,5 @@ class Window3:
  
 if __name__ == "__main__": 
     root = Tk()
-    app = Window1(root)
+    app = Windowstart(root)
     root.mainloop()
