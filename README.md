@@ -25,5 +25,9 @@ Data interaction and record retrival is very important for any day-to-day servic
 `pip install mysql-connector-python`
 
 ### Main menu preview
+<p align = "center">
+ <img src="https://github.com/mr-p-oliveira/Medical-Management/blob/main/Images/Main.png" width="720" height="480">
 
-![Screenshot_6](https://user-images.githubusercontent.com/76667289/110167987-71363b00-7dee-11eb-808b-fde996a80e24.png)
+### Register Area
+<p align = "center">
+ <img src="https://github.com/mr-p-oliveira/Medical-Management/blob/main/Images/Register.png" width="720" height="480">
