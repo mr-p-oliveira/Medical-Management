@@ -7,7 +7,7 @@ import mysql.connector as mysql
 import time
 global root
 
-db = mysql.connect(host="localhost",user = "root",passwd="yourpass",database="testedatabase")
+db = mysql.connect(host="localhost",user = "root",passwd="kilmyPME1",database="testedatabase")
 db_cursor = db.cursor(buffered=True)
 #=============================================================================================================
 class Window1:
@@ -16,7 +16,7 @@ class Window1:
         self.root.config(bg="#2c2f33")
         self.root.title("Portal")
         self.root.geometry("1220x720")
-        self.root.iconbitmap('icone.ico')
+        self.root.iconbitmap('Medical-Management/icone.ico')
         self.root.resizable(0, 0)
  #=============================================================================================================        
         self.frame_left = Frame(root, width=260, height=720, bg="#23272a")
@@ -115,7 +115,7 @@ class Windnew:
         self.root.config(bg="#2c2f33")
         self.root.title("Portal")
         self.root.geometry("1220x720")
-        self.root.iconbitmap('icone.ico')
+        self.root.iconbitmap('Medical-Management/icone.ico')
         self.root.resizable(0, 0)
  #=============================================================================================================
  #===========================================  Variables  =====================================================
@@ -288,7 +288,7 @@ class Windview:
         self.root.config(bg="#2c2f33")
         self.root.title("Portal")
         self.root.geometry("1220x720")
-        self.root.iconbitmap('icone.ico')
+        self.root.iconbitmap('Medical-Management/icone.ico')
         self.root.resizable(0, 0)
  #=============================================================================================================        
         self.frame_left = Frame(self.root, width=260, height=720, bg="#23272a")
@@ -362,7 +362,7 @@ class Windallreg():
         self.root.config(bg="#2c2f33")
         self.root.title("Portal")
         self.root.geometry("1220x720")
-        self.root.iconbitmap('icone.ico')
+        self.root.iconbitmap('Medical-Management/icone.ico')
         self.root.resizable(0, 0)
         self.frame_left = Frame(self.root, width=260, height=720, bg="#23272a")
         self.frame_left.place(x=0,y=0)
@@ -441,7 +441,7 @@ class Windallreg2():
         self.root.config(bg="#2c2f33")
         self.root.title("Portal")
         self.root.geometry("1220x720")
-        self.root.iconbitmap('icone.ico')
+        self.root.iconbitmap('Medical-Management/icone.ico')
         self.root.resizable(0, 0)       
  #=============================================================================================================        
         self.frame_left = Frame(self.root, width=260, height=720, bg="#23272a").place(x=0,y=0)
@@ -510,7 +510,7 @@ class Windsearch():
         self.root.config(bg="#2c2f33")
         self.root.title("Portal")
         self.root.geometry("1220x720")
-        self.root.iconbitmap('icone.ico')
+        self.root.iconbitmap('Medical-Management/icone.ico')
         self.root.resizable(0, 0)       
         self.searx = StringVar()
         self.number = StringVar()
@@ -607,7 +607,7 @@ class WindEdit():
         self.root.config(bg="#2c2f33")
         self.root.title("Portal")
         self.root.geometry("1220x720")
-        self.root.iconbitmap('icone.ico')
+        self.root.iconbitmap('Medical-Management/icone.ico')
         self.root.resizable(0, 0)       
         self.searx = StringVar()
         self.number = StringVar()

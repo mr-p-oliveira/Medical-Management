@@ -6,7 +6,7 @@ import sys
 import os
 global root
 
-db = mysql.connect(host="localhost",user = "root",passwd="kilmyPME1",database="testedatabase")
+db = mysql.connect(host="localhost",user = "root",passwd="pass",database="testedatabase")
 db_cursor = db.cursor(buffered=True)
  #===============================================================================
 class Windowstart:
@@ -15,7 +15,7 @@ class Windowstart:
         self.root.config(bg="#2c2f33")
         self.root.title("Portal")
         self.root.geometry("350x450")
-        self.root.iconbitmap('icone.ico')
+        self.root.iconbitmap('Medical-Management/icone.ico')
         self.root.resizable(0, 0)
  #===============================================================================
         self.label1 = Label(root, text='Welcome !',font='Helvetica 20 ',fg="#ECF0F1",bg="#2c2f33")
@@ -61,7 +61,7 @@ class Window2:
         self.root.config(bg="#2c2f33")
         self.root.title("Portal- Log in")
         self.root.geometry("350x450")
-        self.root.iconbitmap('icone.ico')
+        self.root.iconbitmap('Medical-Management/icone.ico')
         self.root.resizable(0, 0)
         self.nome  = StringVar()
         self.passp = StringVar()
@@ -72,7 +72,8 @@ class Window2:
         self.label3 = Label(root, text='All work by mr-p-oliveira(⌐■_■), 2021',font='Helvetica 7',
                     fg="#D0D3D4",bg="#23272a")
         self.label3.place(x=0,y=440, width=350 ,height=10)
-        self.frame = LabelFrame(root,bg="#2c2f33").place(x=5,y=150, width=340 ,height=135)  
+        self.frame = LabelFrame(root,bg="#2c2f33")
+        self.frame.place(x=5,y=150, width=340 ,height=135)  
  #====================================================================================================  
         self.name = Label(self.frame,text ='Username',font='Helvetica 13 bold',fg="white",bg="#2c2f33")
         self.name.pack(side=TOP, pady=2)        
@@ -83,6 +84,7 @@ class Window2:
         self.passw.pack(side=TOP, pady=2)        
         self.passw = Entry(self.frame,text ='Password',textvariable=self.passp,font='Helvetica 13',show='*',justify='center')
         self.passw.pack(side=TOP, pady=2)
+
         
         self.ent = Button(root, text='Enter', width=10 ,height=1,command=self.login).place(x=90,y=300)
         self.bck = Button(root, text='Back', width=10 ,height=1,command=self.back_win).place(x=175, y=300)
@@ -130,7 +132,7 @@ class Window3:
         self.root.config(bg="#2c2f33")
         self.root.title("Portal- Log in")
         self.root.geometry("350x450")
-        self.root.iconbitmap('icone.ico')
+        self.root.iconbitmap('Medical-Management/icone.ico')
         self.root.resizable(0, 0)      
         self.nome  = StringVar()
         self.passp = StringVar()
