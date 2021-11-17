@@ -7,7 +7,7 @@ import mysql.connector as mysql
 import time
 global root
 
-db = mysql.connect(host="localhost",user = "root",passwd="kilmyPME1",database="testedatabase")
+db = mysql.connect(host="localhost",user = "root",passwd="passwrd",database="testedatabase")
 db_cursor = db.cursor(buffered=True)
 #=============================================================================================================
 class Window1:
